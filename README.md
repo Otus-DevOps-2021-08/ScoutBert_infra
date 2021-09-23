@@ -17,3 +17,6 @@ WEB-интерфейс pritunl: https://62.84.113.242
 
 bastion_IP = 62.84.113.242
 someinternalhost_IP = 10.128.0.18
+
+testapp_IP = 62.84.116.197
+testapp_port = 9292
