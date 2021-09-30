@@ -2,14 +2,14 @@
     "builders": [
         {
             "type": "yandex",
-            "service_account_key_file": "/home/asabitov/yc/key.json",
+            "service_account_key_file": "{{user `SA_KEY_FILE_PATH`}}",
             "folder_id": "b1gomfghlfgn96ee6hpl",
             "source_image_family": "ubuntu-1604-lts",
             "image_name": "reddit-base-{{timestamp}}",
             "image_family": "reddit-base",
             "ssh_username": "ubuntu",
             "platform_id": "standard-v1",
-	    "use_ipv4_nat": "true"
+	        "use_ipv4_nat": "true"
         }
     ],
     "provisioners": [
