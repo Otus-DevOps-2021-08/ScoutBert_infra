@@ -33,4 +33,8 @@ resource "yandex_compute_instance" "app" {
     subnet_id = "e9bvegsa6vvdst24ie0m"
     nat       = true
   }
+  provisioner "file" {
+  source = "files/puma.service"
+  destination = "/tmp/puma.service"
+}
 }
