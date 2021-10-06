@@ -13,7 +13,7 @@ provider "yandex" {
   folder_id                = var.folder_id
   zone                     = var.zone
 }
-resource "yandex_compute_instance" "app" {
+resource "yandex_compute_instance" "app-terraform" {
   count = var.app_instances_count
   name = "reddit-app${count.index}"
 
@@ -23,7 +23,7 @@ resource "yandex_compute_instance" "app" {
 
   resources {
     cores  = 2
-    memory = 2
+    memory = 4
   }
 
   boot_disk {
@@ -42,7 +42,7 @@ resource "yandex_compute_instance" "app" {
     host        = self.network_interface[0].nat_ip_address
     user        = "ubuntu"
     agent       = false
-    private_key = file("~/.ssh/ubuntu")
+    private_key = file(var.private_key_path)
   }
 
   provisioner "file" {

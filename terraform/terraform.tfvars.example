@@ -5,3 +5,5 @@ image_id = "fd8mmtvlncqsvkhto5s6"
 public_key_path = "~/.ssh/yc.pub"
 subnet_id = "e9bem33uhju28r5i7pnu"
 service_account_key_file = "yc_key.json"
+private_key_path         = "~/.ssh/ubuntu"
+app_instances_count      = 3
