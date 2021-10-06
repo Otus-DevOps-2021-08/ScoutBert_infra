@@ -7,16 +7,17 @@ terraform {
 }
 
 provider "yandex" {
-  token     = "AQAAAAAzvwSSAATuwRx08NB7kUTHmsGbJBm1EgA"
-  cloud_id  = "b1guaq33g795kseulbkb"
-  folder_id = "b1gomfghlfgn96ee6hpl"
-  zone      = "ru-central1-a"
+  # token     = "AQAAAAAzvwSSAATuwRx08NB7kUTHmsGbJBm1EgA"
+  service_account_key_file = var.service_account_key_file
+  cloud_id                 = var.cloud_id
+  folder_id                = var.folder_id
+  zone                     = var.zone
 }
 resource "yandex_compute_instance" "app" {
   name = "reddit-app"
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/ubuntu.pub")}"
+  ssh-keys = "ubuntu:${file(var.public_key_path)}"
   }
 
   resources {
@@ -26,12 +27,12 @@ resource "yandex_compute_instance" "app" {
 
   boot_disk {
     initialize_params {
-      image_id = "fd80dmou2coj1e56hos5"
+      image_id = var.image_id
     }
   }
 
   network_interface {
-    subnet_id = "e9bvegsa6vvdst24ie0m"
+    subnet_id = var.subnet_id
     nat       = true
   }
 
