@@ -22,3 +22,12 @@ variable "subnet_id" {
 variable "service_account_key_file" {
   description = "key.json"
 }
+variable "external_app_port" {
+  default = 8080
+}
+variable "internal_app_port" {
+  default = 9292
+}
+variable "app_instances_count" {
+  default = 1
+}

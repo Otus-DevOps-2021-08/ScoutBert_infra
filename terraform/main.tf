@@ -14,7 +14,8 @@ provider "yandex" {
   zone                     = var.zone
 }
 resource "yandex_compute_instance" "app" {
-  name = "reddit-app"
+  count = var.app_instances_count
+  name = "reddit-app${count.index}"
 
   metadata = {
     ssh-keys = "ubuntu:${file(var.public_key_path)}"
@@ -38,7 +39,7 @@ resource "yandex_compute_instance" "app" {
 
   connection {
     type        = "ssh"
-    host        = yandex_compute_instance.app.network_interface.0.nat_ip_address
+    host        = self.network_interface[0].nat_ip_address
     user        = "ubuntu"
     agent       = false
     private_key = file("~/.ssh/ubuntu")
