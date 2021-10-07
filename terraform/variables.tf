@@ -16,7 +16,7 @@ variable "public_key_path" {
 variable private_key_path {
   description = "Path to the private key used for ssh access"
 }
-variable "image_id" {
+variable "reddit-app-base" {
   description = "Disk image"
 }
 variable "subnet_id" {
@@ -33,4 +33,12 @@ variable "internal_app_port" {
 }
 variable "app_instances_count" {
   default = 1
+}
+variable app_disk_image {
+  description = "Disk image for reddit app"
+  default = "reddit-app-base"
+}
+variable db_disk_image {
+  description = "Disk image for reddit app"
+  default = "reddit-app-base"
 }
