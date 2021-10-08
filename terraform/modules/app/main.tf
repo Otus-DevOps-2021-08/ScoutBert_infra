@@ -22,10 +22,10 @@ resource "yandex_compute_instance" "app" {
     }
   }
 
-  network_interface {
-    subnet_id = yandex_vpc_subnet.app-subnet.id
-    nat = true
-  }
+#  network_interface {
+#    subnet_id = yandex_vpc_subnet.app-subnet.id
+#    nat = true
+#  }
 
   metadata = {
   ssh-keys = "ubuntu:${file(var.public_key_path)}"
