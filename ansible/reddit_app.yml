@@ -26,3 +26,6 @@ tags: app-tag
   - name: restart mongod
     become: true
     service: name=mongod state=restarted
+  - name: reload puma
+    become: true
+    systemd: name=puma state=restarted
