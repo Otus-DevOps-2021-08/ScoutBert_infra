@@ -4,6 +4,7 @@
     mongo_bind_ip: 0.0.0.0 # <-- Переменная задается в блоке vars
     db_host: 51.250.0.210
   tasks: # <-- Блок тасков (заданий), которые будут выполняться для данных хостов
+
   - name: Change mongo config file
     become: true
     template:
@@ -12,6 +13,7 @@
       mode: 0644
     tags: db-tag
     notify: restart mongod
+
   - name: Add unit file for Puma
     become: true
     copy:
