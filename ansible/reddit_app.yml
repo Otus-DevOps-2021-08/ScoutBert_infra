@@ -2,7 +2,7 @@
   hosts: all # <-- Для каких хостов будут выполняться описанные ниже таски (hosts)
   vars:
     mongo_bind_ip: 0.0.0.0 # <-- Переменная задается в блоке vars
-    db_host: 51.250.0.210
+    db_host: 10.128.0.34
   tasks: # <-- Блок тасков (заданий), которые будут выполняться для данных хостов
 
   - name: Change mongo config file
@@ -25,14 +25,12 @@
   - name: Add config for DB connection
     template:
      src: templates/db_config.j2
-     dest: /home/appuser/db_config
+     dest: /home/ubuntu/db_config
     tags: app-tag
-
   - name: enable puma
     become: true
     systemd: name=puma enabled=yes
     tags: app-tag
-
   handlers: # <-- Добавим блок handlers и задачу
   - name: restart mongod
     become: true
